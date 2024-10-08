@@ -1,0 +1,31 @@
+/* home.css */
+
+body {
+    background-color: #f0f8ff; /* Fundo mais claro para a página inicial */
+}
+
+h1 {
+    color: #007bff; /* Cor azul para o título */
+    text-align: center; /* Centraliza o título */
+    margin-bottom: 40px; /* Espaço abaixo do título */
+}
+
+.card {
+    border: 1px solid #ddd; /* Borda sutil nos cartões */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.card-title {
+    color: #343a40; /* Cor escura para o título do cartão */
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

@@ -2,6 +2,10 @@
 
 @section('title', 'Home')
 
+@push('styles')
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
     <h1>Bem-vindo à Página Inicial</h1>
     <div class="row">

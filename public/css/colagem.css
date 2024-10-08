@@ -1,0 +1,89 @@
+/* Estilo geral da página */
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    color: #333; /* Cor do texto */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Títulos */
+h1 {
+    color: #007bff; /* Cor do título */
+    text-align: center; /* Centraliza o título */
+}
+
+/* Mensagens de sucesso e erro */
+.success-message {
+    background-color: #d4edda; /* Cor de fundo para sucesso */
+    color: #155724; /* Cor do texto de sucesso */
+    border: 1px solid #c3e6cb; /* Borda verde clara */
+    padding: 15px;
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 20px; /* Espaço abaixo da mensagem */
+}
+
+.error-message {
+    background-color: #f8d7da; /* Cor de fundo para erro */
+    color: #721c24; /* Cor do texto de erro */
+    border: 1px solid #f5c6cb; /* Borda vermelha clara */
+    padding: 15px;
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 20px; /* Espaço abaixo da mensagem */
+}
+
+/* Estilo do formulário */
+form {
+    background-color: #ffffff; /* Cor de fundo dos formulários */
+    padding: 20px;
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+    margin-bottom: 20px; /* Espaço abaixo dos formulários */
+    
+}
+
+/* Estilo dos rótulos e inputs */
+label {
+    display: block; /* Faz o rótulo ocupar toda a linha */
+    margin-bottom: 5px; /* Espaço abaixo do rótulo */
+    font-weight: bold; /* Negrito para rótulos */
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaço interno */
+    border: 1px solid #ced4da; /* Borda cinza */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 10px; /* Espaço abaixo do input */
+}
+
+/* Estilo dos botões */
+button {
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+    transition: background-color 0.3s; /* Animação suave para a cor de fundo */
+    margin: 5px 0; /* Ajuste a margem conforme necessário */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor de fundo azul escuro ao passar o mouse */
+}
+
+.btn-danger {
+    background-color: red; /* Cor de fundo vermelha para o botão de colar */
+}
+
+.btn-danger:hover {
+    background-color: darkred; /* Cor ao passar o mouse sobre o botão de colar */
+}
+
+/* Estilo do contêiner dos botões */
+.button-container {
+    display: flex; /* Alinha os formulários em linha */
+    flex-direction: column; /* Alinha verticalmente */
+}

@@ -1,0 +1,117 @@
+/* classificacao.css */
+
+/* Estilizando o corpo da página */
+body {
+    background-color: #f0f8ff; /* Fundo leve */
+    font-family: Arial, sans-serif;
+}
+
+/* Estilizando o título da página */
+h1 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+/* Mensagens de sucesso e erro */
+.success-message {
+    color: #28a745;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.error-message ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.error-message ul li {
+    margin: 5px 0;
+}
+
+/* Estilizando o formulário */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+/* Container dos campos de tamanho */
+.tamanho-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.tamanho-container div {
+    flex: 1;
+}
+
+/* Botão de envio */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .tamanho-container {
+        flex-direction: column;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+}
