@@ -30,7 +30,7 @@
             <button type="submit">Buscar Pacote</button>
         </form>
     @else
-        <!-- Formulário para atualizar o pacote -->
+        <!-- Exibição dos dados do pacote encontrado -->
         <h2>Dados do Pacote</h2>
         <p><strong>Código:</strong> {{ $pacote->codigo }}</p>
         <p><strong>Comprimento:</strong> {{ $pacote->comprimento }}</p>
@@ -41,11 +41,13 @@
         <p><strong>Status:</strong> {{ $pacote->status }}</p>
 
         <div class="button-container">
+            <!-- Formulário para atualizar a quantidade do pacote -->
             <form action="{{ route('colagem.atualizar') }}" method="POST">
                 @csrf
                 <div>
                     <label for="quantidade">Alterar Quantidade:</label>
-                    <input type="number" name="quantidade" id="quantidade" required>
+                    <input type="number" name="quantidade" id="quantidade" required min="0"> <!-- Adicione min para evitar valores negativos -->
+                    <input type="hidden" name="codigo" value="{{ $pacote->codigo }}"> <!-- Campo oculto para enviar o código -->
                 </div>
                 <button type="submit" style="margin-bottom: 10px;">Atualizar Pacote</button>
             </form>

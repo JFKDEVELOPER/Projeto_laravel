@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-    <h1>Bem-vindo à Página Inicial</h1>
+    <h1>Controle de estoque</h1>
     <div class="row">
         @foreach($featuredPosts as $post)
             <div class="col-md-4">
