@@ -14,7 +14,7 @@ class PacoteController extends Controller
             'comprimento' => 'required|numeric',
             'largura' => 'required|numeric',
             'espessura' => 'required|numeric',
-            'tipo' => 'required|string',
+            'tipo' => 'required|string|in:capa clara,capa escura,parte de tras sem furos,parte de tras com furos',
             'quantidade' => 'required|numeric|min:0', // Validação para garantir que a quantidade não seja negativa
         ]);
 
@@ -64,11 +64,7 @@ class PacoteController extends Controller
         ]);
 
         // Busca o pacote pelo código
-        $pacote = Pacotes::where('codigo', $codigo)->first();
-
-        if (!$pacote) {
-            return redirect()->route('colagem')->withErrors(['codigo' => 'Pacote não encontrado.']);
-        }
+        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail(); // Alterado para firstOrFail
 
         // Atualiza a quantidade e o status
         $pacote->quantidade = $request->quantidade;
@@ -81,11 +77,7 @@ class PacoteController extends Controller
     public function colar($codigo)
     {
         // Busca o pacote pelo código
-        $pacote = Pacotes::where('codigo', $codigo)->first();
-
-        if (!$pacote) {
-            return redirect()->route('colagem')->withErrors(['codigo' => 'Pacote não encontrado.']);
-        }
+        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail(); // Alterado para firstOrFail
 
         // Define a quantidade como 0 e atualiza o status
         $pacote->quantidade = 0;
@@ -93,5 +85,56 @@ class PacoteController extends Controller
         $pacote->save();
 
         return redirect()->route('colagem')->with('success', 'Pacote colado com sucesso!');
+    }
+
+    public function editar($codigo)
+    {
+        // Busca o pacote pelo código
+        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail();
+
+        // Opções fixas para os campos
+        $comprimentos = [1850, 1250, 950, 650, 470]; // Comprimentos disponíveis
+        $larguras = [144, 100]; // Larguras disponíveis
+        $espessuras = [3.7, 2.5]; // Espessuras disponíveis
+        $tipos = ['capa clara', 'capa escura', 'parte de tras sem furos', 'parte de tras com furos']; // Tipos fixos
+
+        return view('admin.editar_pacote', compact('pacote', 'tipos', 'comprimentos', 'larguras', 'espessuras'));
+    }
+
+    public function atualizarPacote(Request $request, $codigo)
+    {
+        // Validação dos dados de atualização
+        $request->validate([
+            'tipo' => 'required|string|in:capa clara,capa escura,parte de tras sem furos,parte de tras com furos',
+            'comprimento' => 'required|numeric',
+            'largura' => 'required|numeric',
+            'espessura' => 'required|numeric',
+            'quantidade' => 'required|integer|min:0',
+        ]);
+
+        // Busca o pacote pelo código
+        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail();
+
+        // Atualiza os dados do pacote
+        $pacote->tipo = $request->tipo;
+        $pacote->comprimento = $request->comprimento;
+        $pacote->largura = $request->largura;
+        $pacote->espessura = $request->espessura;
+        $pacote->quantidade = $request->quantidade;
+        $pacote->status = ($pacote->quantidade === 0) ? 'colado' : 'estoque';
+        $pacote->save();
+
+        return redirect()->route('controle_estoque')->with('success', 'Pacote atualizado com sucesso!');
+    }
+
+    public function deletar($codigo)
+    {
+        // Busca o pacote pelo código
+        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail(); // Alterado para firstOrFail
+
+        // Exclui o pacote
+        $pacote->delete();
+
+        return redirect()->route('controle_estoque')->with('success', 'Pacote excluído com sucesso!');
     }
 }

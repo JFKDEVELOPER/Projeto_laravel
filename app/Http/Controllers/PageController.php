@@ -38,7 +38,10 @@ class PageController extends Controller
 
     public function administracao() // Método para a página de administração
     {
-        return view('admin.admpage'); // Certifique-se de que a view existe
+        // Obtém todos os pacotes do banco de dados
+        $pacotes = Pacotes::all(); // Adiciona esta linha para buscar os pacotes
+
+        return view('admin.admpage', compact('pacotes')); // Passa os pacotes para a view
     }
 
     public function controleEstoque(Request $request) 
@@ -90,8 +93,17 @@ class PageController extends Controller
         return view('admin.controle_estoque', compact('pacotes', 'tipos', 'status', 'comprimentos', 'larguras', 'espessuras'));
     }
 
-    public function alterarPacote()
-    {
-        return view('admin.alterar_pacote'); // A view que você irá criar
+    public function alterarPacote($codigo)
+{
+    // Busca o pacote pelo código
+    $pacote = Pacotes::where('codigo', $codigo)->first();
+
+    // Verifica se o pacote existe
+    if (!$pacote) {
+        return redirect()->route('administracao')->with('error', 'Pacote não encontrado.'); // Redireciona com uma mensagem de erro se não encontrado
     }
+
+    return view('admin.alterar_pacote', compact('pacote')); // Passa o pacote encontrado para a view
+}
+
 }

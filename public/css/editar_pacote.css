@@ -1,0 +1,66 @@
+/* Estilização básica para a página de edição de pacotes */
+
+body {
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    background-color: #f9f9f9; /* Cor de fundo suave */
+    margin: 0;
+    padding: 20px; /* Adiciona um espaçamento ao redor da página */
+}
+
+h1 {
+    color: #333; /* Cor do título */
+    text-align: center; /* Centraliza o título */
+    margin-bottom: 20px; /* Espaçamento inferior do título */
+}
+
+p {
+    text-align: center; /* Centraliza o texto do código do pacote */
+    font-size: 16px; /* Tamanho da fonte */
+    color: #555; /* Cor do texto */
+    margin-bottom: 20px; /* Espaçamento inferior do parágrafo */
+}
+
+.form-group {
+    margin: 15px 0; /* Espaçamento entre os grupos de formulários */
+}
+
+label {
+    font-weight: bold; /* Deixa os rótulos em negrito */
+    margin-bottom: 5px; /* Espaçamento inferior dos rótulos */
+    display: block; /* Faz os rótulos ocuparem toda a largura */
+}
+
+select, input[type="number"] {
+    width: 100%; /* Faz os campos ocuparem toda a largura disponível */
+    padding: 10px; /* Espaçamento interno nos campos */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 4px; /* Cantos arredondados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para os campos */
+}
+
+button {
+    background-color: #007bff; /* Cor do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove a borda padrão */
+    padding: 10px; /* Espaçamento interno do botão */
+    border-radius: 4px; /* Cantos arredondados do botão */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+    width: 100%; /* Faz o botão ocupar toda a largura */
+    font-size: 16px; /* Tamanho da fonte do botão */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+/* Adiciona um estilo de erro para inputs com erro */
+input.error, select.error {
+    border-color: red; /* Borda vermelha para campos com erro */
+}
+
+.error-message {
+    color: red; /* Cor da mensagem de erro */
+    font-size: 12px; /* Tamanho da fonte da mensagem de erro */
+    margin-top: 5px; /* Margem superior para a mensagem de erro */
+}

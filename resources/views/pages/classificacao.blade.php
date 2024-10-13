@@ -9,7 +9,7 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-    <h1>Página de registro</h1>
+    <h1>Página de Registro</h1>
 
     @if(session('success'))
         <div class="success-message">{{ session('success') }}</div>
@@ -59,7 +59,7 @@
 
             <div>
                 <label for="quantidade">Quantidade:</label>
-                <input type="text" name="quantidade" id="quantidade" value="{{ old('quantidade') }}" required placeholder="" class="comprimento">
+                <input type="text" name="quantidade" id="quantidade" value="{{ old('quantidade') }}" required placeholder="Digite a quantidade" class="comprimento">
             </div>
         </div>
 
@@ -67,10 +67,10 @@
             <label for="tipo">Tipo:</label>
             <select name="tipo" id="tipo" required>
                 <option value="" disabled selected>Selecione o Tipo</option>
-                <option value="Capa clara">Capa clara</option>
-                <option value="Capa escura">Capa escura</option>
-                <option value="Parte de trás com furos">Parte de trás com furos</option>
-                <option value="Parte de trás sem furos">Parte de trás sem furos</option>
+                <option value="capa clara">Capa clara</option>
+                <option value="capa escura">Capa escura</option>
+                <option value="parte de tras com furos">Parte de trás com furos</option>
+                <option value="parte de tras sem furos">Parte de trás sem furos</option>
             </select>
         </div>
 
