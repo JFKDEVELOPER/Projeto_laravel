@@ -15,7 +15,7 @@ class PacoteController extends Controller
             'largura' => 'required|numeric',
             'espessura' => 'required|numeric',
             'tipo' => 'required|string',
-            'quantidade' => 'required|numeric',
+            'quantidade' => 'required|numeric|min:0', // Validação para garantir que a quantidade não seja negativa
         ]);
 
         // Gerar código de 4 dígitos e garantir que não se repita
@@ -34,7 +34,7 @@ class PacoteController extends Controller
         $pacote->status = ($pacote->quantidade === 0) ? 'colado' : 'estoque';
         $pacote->save();
 
-        return redirect()->route('classificacao')->with('success', 'Pacote criado com sucesso! O ID do pacote é: ' . $codigo);
+        return redirect()->route('classificacao')->with('success', 'Pacote criado com sucesso! O código do pacote é: ' . $codigo);
     }
 
     public function buscar(Request $request)
@@ -56,16 +56,15 @@ class PacoteController extends Controller
         return view('pages.colagem', compact('pacote'));
     }
 
-    public function atualizar(Request $request)
+    public function atualizar(Request $request, $codigo)
     {
         // Validação dos dados de atualização
         $request->validate([
-            'codigo' => 'required|string|size:4',
-            'quantidade' => 'required|numeric',
+            'quantidade' => 'required|numeric|min:0', // Garantir que a quantidade não seja negativa
         ]);
 
         // Busca o pacote pelo código
-        $pacote = Pacotes::where('codigo', $request->codigo)->first();
+        $pacote = Pacotes::where('codigo', $codigo)->first();
 
         if (!$pacote) {
             return redirect()->route('colagem')->withErrors(['codigo' => 'Pacote não encontrado.']);

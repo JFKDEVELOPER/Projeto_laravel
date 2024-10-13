@@ -42,11 +42,11 @@
 
         <div class="button-container">
             <!-- Formulário para atualizar a quantidade do pacote -->
-            <form action="{{ route('colagem.atualizar') }}" method="POST">
+            <form action="{{ route('colagem.atualizar', $pacote->codigo) }}" method="POST"> <!-- Ajuste aqui -->
                 @csrf
                 <div>
                     <label for="quantidade">Alterar Quantidade:</label>
-                    <input type="number" name="quantidade" id="quantidade" required min="0"> <!-- Adicione min para evitar valores negativos -->
+                    <input type="number" name="quantidade" id="quantidade" required min="0" value="{{ $pacote->quantidade }}"> <!-- Adicionado value -->
                     <input type="hidden" name="codigo" value="{{ $pacote->codigo }}"> <!-- Campo oculto para enviar o código -->
                 </div>
                 <button type="submit" style="margin-bottom: 10px;">Atualizar Pacote</button>

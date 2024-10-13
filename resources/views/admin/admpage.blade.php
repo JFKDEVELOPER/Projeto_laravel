@@ -18,7 +18,7 @@
         </a>
     </div>
     <div class="col-md-4">
-        <a href="{{ route('alteracao_pacotes') }}" class="card-link"> <!-- Certifique-se de usar o nome correto da rota -->
+        <a href="{{ route('alterar_pacote') }}" class="card-link"> <!-- Certifique-se de usar o nome correto da rota -->
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Alteração de Pacotes</h5>
