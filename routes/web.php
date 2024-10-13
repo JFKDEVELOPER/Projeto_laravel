@@ -23,4 +23,4 @@ Route::get('admin', [PageController::class, 'administracao'])->name('administrac
 Route::get('controle_estoque', [PageController::class, 'controleEstoque'])->name('controle_estoque');
 
 // Página de alteração de pacotes
-Route::get('alterar_pacotes', [PageController::class, 'alteracaoPacotes'])->name('alterar_pacotes');
+Route::get('alterar_pacotes', [PageController::class, 'alteracaoPacotes'])->name('alteracao_pacotes');
