@@ -15,7 +15,6 @@
         <div class="success-message">{{ session('success') }}</div>
     @endif
 
-    {{-- Exibindo os erros de validação --}}
     @if($errors->any())
         <div class="error-message">
             <ul>
@@ -31,7 +30,7 @@
         <div class="comprimento-container">
             <div>
                 <label for="comprimento">Comprimento:</label>
-                <select name="comprimento" id="comprimento" class="comprimento" required>
+                <select name="comprimento" id="comprimento" required>
                     <option value="" disabled selected>Selecione o Comprimento</option>
                     <option value="1850">1.850</option>
                     <option value="1250">1.250</option>
@@ -43,23 +42,21 @@
 
             <div>
                 <label for="largura">Largura:</label>
-                <select name="largura" id="largura" class="comprimento" required>
+                <select name="largura" id="largura" required>
                     <option value="" disabled selected>Selecione a Largura</option>
-                    {{-- Opções de largura serão inseridas via JavaScript --}}
                 </select>
             </div>
 
             <div>
                 <label for="espessura">Espessura:</label>
-                <select name="espessura" id="espessura" class="comprimento" required>
+                <select name="espessura" id="espessura" required>
                     <option value="" disabled selected>Selecione a Espessura</option>
-                    {{-- Opções de espessura serão inseridas via JavaScript --}}
                 </select>
             </div>
 
             <div>
                 <label for="quantidade">Quantidade:</label>
-                <input type="text" name="quantidade" id="quantidade" value="{{ old('quantidade') }}" required placeholder="Digite a quantidade" class="comprimento">
+                <input type="text" name="quantidade" id="quantidade" value="{{ old('quantidade') }}" required placeholder="Digite a quantidade">
             </div>
         </div>
 
@@ -78,7 +75,6 @@
     </form>
 
     <script>
-        // Opções de Largura e Espessura
         const options = {
             '1850': { larguras: [144, 100], espessuras: [3.7, 2.5] },
             '1250': { larguras: [144, 100], espessuras: [3.7, 2.5] },
@@ -91,15 +87,11 @@
         const larguraSelect = document.getElementById('largura');
         const espessuraSelect = document.getElementById('espessura');
 
-        // Função para atualizar as opções de largura e espessura com base no comprimento selecionado
         comprimentoSelect.addEventListener('change', function() {
             const selectedComprimento = this.value;
-
-            // Limpar as opções atuais de largura e espessura
             larguraSelect.innerHTML = '<option value="" disabled selected>Selecione a Largura</option>';
             espessuraSelect.innerHTML = '<option value="" disabled selected>Selecione a Espessura</option>';
 
-            // Adicionar as novas opções de largura
             if (options[selectedComprimento]) {
                 options[selectedComprimento].larguras.forEach(function(largura) {
                     const option = document.createElement('option');
@@ -110,14 +102,10 @@
             }
         });
 
-        // Função para atualizar as opções de espessura com base na largura selecionada
         larguraSelect.addEventListener('change', function() {
             const selectedComprimento = comprimentoSelect.value;
-
-            // Limpar as opções atuais de espessura
             espessuraSelect.innerHTML = '<option value="" disabled selected>Selecione a Espessura</option>';
 
-            // Adicionar as novas opções de espessura
             if (options[selectedComprimento]) {
                 options[selectedComprimento].espessuras.forEach(function(espessura) {
                     const option = document.createElement('option');

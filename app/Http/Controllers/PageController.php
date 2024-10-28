@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pacotes; // Importando o modelo Pacotes
+use App\Models\Pacotes;
 
 class PageController extends Controller
 {
@@ -36,40 +36,39 @@ class PageController extends Controller
         return view('pages.classificacao', compact('featuredPosts'));
     }
 
-    public function administracao() // Método para a página de administração
+    public function administracao()
     {
-        // Obtém todos os pacotes do banco de dados
-        $pacotes = Pacotes::all(); // Adiciona esta linha para buscar os pacotes
+        $pacotes = Pacotes::all(); // Consulta para buscar todos os pacotes
 
-        return view('admin.admpage', compact('pacotes')); // Passa os pacotes para a view
+        return view('admin.admpage', compact('pacotes'));
     }
 
     public function controleEstoque(Request $request) 
     {
-        // Inicializa a consulta
+        // Inicializa a consulta para o modelo Pacotes
         $query = Pacotes::query();
     
-        // Filtra por tipo se especificado
+        // Filtra por tipo se especificado na requisição
         if ($request->filled('tipo')) {
             $query->where('tipo', $request->tipo);
         }
     
-        // Filtra por comprimento se especificado
+        // Filtra por comprimento se especificado na requisição
         if ($request->filled('comprimento')) {
             $query->where('comprimento', $request->comprimento);
         }
     
-        // Filtra por largura se especificado
+        // Filtra por largura se especificado na requisição
         if ($request->filled('largura')) {
             $query->where('largura', $request->largura);
         }
     
-        // Filtra por espessura se especificado
+        // Filtra por espessura se especificado na requisição
         if ($request->filled('espessura')) {
             $query->where('espessura', $request->espessura);
         }
     
-        // Filtra por status se especificado
+        // Filtra por status se especificado na requisição
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
@@ -77,7 +76,6 @@ class PageController extends Controller
         // Executa a consulta e obtém os pacotes filtrados
         $pacotes = $query->get();
 
-        // Se nenhum pacote for encontrado, você pode adicionar uma mensagem
         if ($pacotes->isEmpty()) {
             session()->flash('error', 'Nenhum pacote encontrado com os critérios especificados.');
         }
@@ -89,21 +87,21 @@ class PageController extends Controller
         $larguras = Pacotes::distinct()->orderBy('largura', 'desc')->pluck('largura');
         $espessuras = Pacotes::distinct()->orderBy('espessura', 'desc')->pluck('espessura');
     
-        // Retorna a view com os pacotes filtrados e as opções para os filtros
+        // Retorna a view 
         return view('admin.controle_estoque', compact('pacotes', 'tipos', 'status', 'comprimentos', 'larguras', 'espessuras'));
     }
 
-    public function alterarPacote($codigo)
-{
-    // Busca o pacote pelo código
-    $pacote = Pacotes::where('codigo', $codigo)->first();
+    public function alterarPacote($codigo) 
+    {
+        // Busca o pacote pelo código
+        $pacote = Pacotes::where('codigo', $codigo)->first();
 
-    // Verifica se o pacote existe
-    if (!$pacote) {
-        return redirect()->route('administracao')->with('error', 'Pacote não encontrado.'); // Redireciona com uma mensagem de erro se não encontrado
+        // Verifica se o pacote existe
+        if (!$pacote) {
+            // Retorna erro se nao encontrado
+            return redirect()->route('administracao')->with('error', 'Pacote não encontrado.');
+        }
+
+        return view('admin.alterar_pacote', compact('pacote'));
     }
-
-    return view('admin.alterar_pacote', compact('pacote')); // Passa o pacote encontrado para a view
-}
-
 }

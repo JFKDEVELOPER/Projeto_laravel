@@ -7,7 +7,7 @@
 
 <h1>Controle de Estoque</h1>
 
-<!-- Formulário de Filtros -->
+
 <form method="GET" action="{{ route('controle_estoque') }}">
     <div class="row mb-3">
         <div class="col">
@@ -70,7 +70,7 @@
             <th>Quantidade</th>
             <th>Status</th>
             <th>Código</th>
-            <th>Ações</th> <!-- Adicionado para ações -->
+            <th>Ações</th> 
         </tr>
     </thead>
     <tbody>
@@ -91,7 +91,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Excluir</button>
                     </form>
-                </td> <!-- Botão Editar e Excluir -->
+                </td> 
             </tr>
         @endforeach
     </tbody>

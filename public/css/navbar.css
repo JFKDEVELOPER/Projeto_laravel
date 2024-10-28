@@ -1,0 +1,53 @@
+/* Estilo básico da navbar */
+.navbar {
+    background-color: #343a40; /* Cor de fundo escura */
+    padding: 10px 20px; /* Espaçamento interno */
+}
+
+/* Estilo da marca da navbar */
+.navbar-brand {
+    color: #ffffff; /* Cor do texto */
+    font-weight: bold; /* Negrito */
+}
+
+.navbar-brand:hover {
+    color: #f8f9fa; /* Cor do texto ao passar o mouse */
+}
+
+/* Estilo dos itens da  navbar */
+.navbar-nav .nav-link {
+    color: #ffffff; /* Cor do texto dos links */
+    padding: 10px 15px; /* Espaçamento interno dos links */
+    transition: background-color 0.3s; /* Transição suave para fundo */
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo ao passar o mouse */
+    border-radius: 5px; /* Bordas arredondadas ao passar o mouse */
+}
+
+/* Estilo do botão de logout */
+.btn-link {
+    color: #ffffff; /* Cor do texto do botão de logout */
+    background: none; /* Fundo transparente */
+    border: none; /* Remove borda */
+    padding: 0; /* Remove padding para alinhamento */
+    margin: 0; /* Remove margens */
+    cursor: pointer; /* Cursor de ponteiro */
+}
+
+/* Efeito ao passar o mouse no botão de logout */
+.btn-link:hover {
+    color: #f8f9fa; /* Cor do texto ao passar o mouse */
+}
+
+/* Estilos responsivos para a navbar */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 5px 10px; /* Reduz o padding em telas menores */
+    }
+
+    .navbar-nav .nav-link {
+        padding: 8px 10px; /* Ajusta o padding dos links */
+    }
+}

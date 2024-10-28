@@ -39,11 +39,6 @@ class PacoteController extends Controller
 
     public function buscar(Request $request)
     {
-        // Validação do código do pacote
-        $request->validate([
-            'codigo' => 'required|string|size:4',
-        ]);
-
         // Busca o pacote pelo código
         $pacote = Pacotes::where('codigo', $request->codigo)->first();
 
@@ -63,8 +58,8 @@ class PacoteController extends Controller
             'quantidade' => 'required|numeric|min:0', // Garantir que a quantidade não seja negativa
         ]);
 
-        // Busca o pacote pelo código
-        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail(); // Alterado para firstOrFail
+        // Busca o pacote pelo código e o firsOrFail retorna erro se o codigo nao for encontrado no banco
+        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail();
 
         // Atualiza a quantidade e o status
         $pacote->quantidade = $request->quantidade;
@@ -77,7 +72,7 @@ class PacoteController extends Controller
     public function colar($codigo)
     {
         // Busca o pacote pelo código
-        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail(); // Alterado para firstOrFail
+        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail();
 
         // Define a quantidade como 0 e atualiza o status
         $pacote->quantidade = 0;
@@ -130,7 +125,7 @@ class PacoteController extends Controller
     public function deletar($codigo)
     {
         // Busca o pacote pelo código
-        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail(); // Alterado para firstOrFail
+        $pacote = Pacotes::where('codigo', $codigo)->firstOrFail();
 
         // Exclui o pacote
         $pacote->delete();
