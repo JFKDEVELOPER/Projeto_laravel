@@ -9,7 +9,7 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-    <h1>Página de Registro</h1>
+    <h1>PAGINA DE REGISTRO</h1>
 
     @if(session('success'))
         <div class="success-message">{{ session('success') }}</div>

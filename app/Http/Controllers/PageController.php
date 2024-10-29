@@ -104,4 +104,9 @@ class PageController extends Controller
 
         return view('admin.alterar_pacote', compact('pacote'));
     }
+
+    public function login()
+    {
+        return view('login_pages.login', compact('featuredPosts'));
+    }
 }

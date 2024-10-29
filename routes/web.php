@@ -7,6 +7,8 @@ use App\Http\Controllers\PacoteController;
 // Define home como pagina principal
 Route::get('/', [PageController::class, 'home'])->name('home');
 
+Route::get('/login', [PageController::class, 'login'])->name('login');
+
 // Rotas colagem
 Route::get('colagem', [PageController::class, 'colagem'])->name('colagem');
 Route::post('colagem/buscar', [PacoteController::class, 'buscar'])->name('colagem.buscar');
